@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav.jsx";
 import "./App.css";
 
-const dbURL = "http://localhost:3002/books";
+const dbURL = import.meta.env.VITE_DB;
 
 function App() {
   const [query, setQuery] = useState("");
