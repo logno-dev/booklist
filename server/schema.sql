@@ -1,0 +1,8 @@
+CREATE TABLE booklist (
+  id INTEGER PRIMARY KEY,
+  title TEXT NOT NULL,
+  author TEXT NOT NULL,
+  pubYear TEXT NOT NULL,
+  isbn TEXT NOT NULL,
+  img TEXT NOT NULL
+);
