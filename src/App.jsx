@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import Nav from "./components/Nav.jsx";
 import "./App.css";
 
+const dbURL = "http://localhost:3002/books";
+
 function App() {
   const [query, setQuery] = useState("");
   const [booklist, setBooklist] = useState([]);
 
   useEffect(() => {
-    const url = "http://localhost:3002/books";
-    fetch(url)
+    fetch(dbURL)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
