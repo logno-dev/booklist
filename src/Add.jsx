@@ -5,13 +5,17 @@ import "./App.css";
 function App() {
   const [query, setQuery] = useState("");
   const [bookList, setBookList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  function getBookList() {
+  function getBookList(e) {
+    e.preventDefault();
+    setBookList([]);
+    setLoading(true);
     const url = "https://openlibrary.org/search.json?q=" +
       query.replace(" ", "-");
     fetch(url).then((res) => res.json())
       .then((data) => {
-        console.log(data.docs);
+        setLoading(false);
         setBookList(data.docs);
       });
   }
@@ -19,16 +23,19 @@ function App() {
   return (
     <>
       <Nav />
-      <form>
+      <h1>Add Books</h1>
+      <form onSubmit={(e) => getBookList(e)}>
         <input
           name="query"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <button type="button" onClick={getBookList}>Search</button>
+        <button type="submit">Search</button>
       </form>
 
       <ul className="book-list">
+        {loading ? <h3>loading...</h3> : null}
+
         {bookList
           ? bookList.map((book) => (
             <li key={book.key}>
