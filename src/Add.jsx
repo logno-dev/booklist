@@ -2,6 +2,8 @@ import { useState } from "react";
 import Nav from "./components/Nav.jsx";
 import "./App.css";
 
+const dbURL = import.meta.env.VITE_DB;
+
 function App() {
   const [query, setQuery] = useState("");
   const [bookList, setBookList] = useState([]);
@@ -76,7 +78,7 @@ function AddBook({ book }) {
     };
     console.log(newBook);
     try {
-      fetch("http://localhost:3002/books", {
+      fetch(dbURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
