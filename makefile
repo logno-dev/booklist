@@ -1,3 +1,3 @@
 run:
 	node ./server/index.js
-	caddy file-server ./dist/
+	sudo caddy file-server ./dist/
