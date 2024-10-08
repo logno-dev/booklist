@@ -60,6 +60,7 @@ function App() {
       <Nav />
       <form>
         <input
+          className="search-box"
           name="query"
           value={query}
           onChange={(e) => filterList(e)}

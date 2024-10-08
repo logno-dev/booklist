@@ -28,9 +28,11 @@ function App() {
       <h1>Add Books</h1>
       <form onSubmit={(e) => getBookList(e)}>
         <input
+          className="search-box"
           name="query"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search..."
         />
         <button type="submit">Search</button>
       </form>
