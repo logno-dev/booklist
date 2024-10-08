@@ -72,10 +72,18 @@ function App() {
             <img
               src={book.img}
             />
-            <p>Title:{book.title}</p>
-            <p>Author:{book.author}</p>
-            <p>Published: {book.pubYear}</p>
-            <p>ISBN:{book.isbn}</p>
+            <p>
+              Title: <span className="card-title">{book.title}</span>
+            </p>
+            <p>
+              Author: <span className="card-title">{book.author}</span>
+            </p>
+            <p>
+              Published: <span className="card-title">{book.pubYear}</span>
+            </p>
+            <p>
+              ISBN: <span className="card-title">{book.isbn}</span>
+            </p>
           </li>
         ))}
       </ul>

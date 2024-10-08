@@ -60,11 +60,30 @@ nav ul a {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
-  gap: .5rem;
+  place-content: center;
+  gap: .6rem;
+  padding: 0;
 }
 
 .book-list li {
-  border: solid whitesmoke 2px;
-  border-radius: 4px;
-  padding: 4px;
+  background-color: #efefe9;
+  color: #030303;
+  border-radius: 14px;
+  padding: 1.3rem;
+  max-width: 20rem;
+}
+
+.book-list li img {
+  box-shadow: 4px 4px 20px 6px #00000099;
+  border-radius: 8px;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  place-content: center;
 }

@@ -48,12 +48,24 @@ function App() {
                       src={"https://covers.openlibrary.org/b/id/" +
                         book.cover_i + "-M.jpg"}
                     />
-                    <p>Title:{book.title}</p>
-                    <p>Author:{book.author_name}</p>
+                    <p>
+                      Title: <span className="card-title">{book.title}</span>
+                    </p>
+                    <p>
+                      Author:{" "}
+                      <span className="card-title">{book.author_name}</span>
+                    </p>
                     {book.publish_year && (
-                      <p>Published: {book.publish_year[0]}</p>
+                      <p>
+                        Published:{" "}
+                        <span className="card-title">
+                          {book.publish_year[0]}
+                        </span>
+                      </p>
                     )}
-                    <p>ISBN:{book.isbn[0]}</p>
+                    <p>
+                      ISBN: <span className="card-title">{book.isbn[0]}</span>
+                    </p>
                     <br />
                     <AddBook book={book} />
                   </>
