@@ -29,17 +29,32 @@ app.get("/books", (req, res) => {
 
 app.post("/books", (req, res) => {
   const { author, title, pubYear, isbn, img } = req.body;
-  const sql =
-    "INSERT INTO booklist(author, title, pubYear, isbn, img) VALUES (?, ?, ?, ?, ?)";
-  db.run(sql, [author, title, pubYear, isbn, img], function (err) {
-    if (err) {
-      console.error(err.message);
-      res.status(500).send("Internal server error");
-    } else {
-      const id = this.lastID;
-      res.status(201).send({ id, author, title, pubYear, isbn, img });
-    }
-  });
+  db.all(
+    "SELECT * FROM booklist WHERE isbn LIKE ?",
+    [isbn],
+    (err, rows) => {
+      if (err) {
+        console.error(err.message);
+        res.status(500).send("Internal server error");
+      } else if (rows.length === 0) {
+        const sql =
+          "INSERT INTO booklist(author, title, pubYear, isbn, img) VALUES (?, ?, ?, ?, ?)";
+        db.run(sql, [author, title, pubYear, isbn, img], function (err) {
+          if (err) {
+            console.error(err.message);
+            res.status(500).send("Internal server error");
+          } else {
+            const id = this.lastID;
+            res.status(201).send({ id, author, title, pubYear, isbn, img });
+          }
+        });
+      } else {
+        res.status(569).send("Entry already exists");
+        console.log("entery already exists");
+        return;
+      }
+    },
+  );
 });
 
 app.listen(port, () => {

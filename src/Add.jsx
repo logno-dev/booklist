@@ -85,6 +85,10 @@ function AddBook({ book }) {
           "mode": "cors",
         },
         body: JSON.stringify(newBook),
+      }).then((res) => {
+        if (res.status === 569) {
+          alert("entry already exists");
+        }
       });
     } catch (e) {
       console.log(e);
